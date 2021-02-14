@@ -1,0 +1,26 @@
+Install in cmd admin:
+python.exe -m pip install --upgrade pip
+pip install requests
+pip install scrapy
+
+Generate scrapy in cmd:
+D:
+cd DA_TAG
+scrapy startproject scrapy_code
+cd scrapy_code
+scrapy genspider tb thunderbrian.tanahgao.synology.me
+cd scrapy_code\spiders
+scrapy runspider tb.py
+
+<Pycharm> Open D:\DA_TAG\scrapy_code\scrapy_code\spiderstb.py
+<Pycharm> Replace the parse method with the following:
+def parse(self, response):
+  css_selector = 'img'
+  for x in response.css(css_selector):
+    newsel = '@src'
+    yield {
+      'Image Link': x.xpath(newsel).extract_first(),
+    }   
+<Pycharm> Save tb.py
+
+scrapy runspider ite.py -o results.json -t json
