@@ -12,6 +12,6 @@ while True:
     client_connection, client_address = s.accept();
     request = client_connection.recv(1024);
     print(request.decode("utf-8"));
-    http_response = "HTTP/1.1 200 OK\n\nWelcome to localhost:8080!"
+    http_response = "HTTP/1.1 200 OK\n\nWelcome to localhost:8080, DA_TAG!"
     client_connection.sendall(bytes(http_response, "utf-8"));
     client_connection.close();
